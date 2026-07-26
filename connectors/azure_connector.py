@@ -10,7 +10,7 @@ class AzureConnector(BaseConnector):
                 'vpc_id': '/subscriptions/mock-sub-id/resourceGroups/mock-rg/providers/Microsoft.Network/virtualNetworks/mock-vnet-1',
                 'cidr_block': '10.0.0.0/16',
                 'state': 'Succeeded',
-                'is_defualt': False
+                'is_default': False
             }
         ]
 
