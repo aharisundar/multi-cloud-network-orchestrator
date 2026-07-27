@@ -19,4 +19,15 @@ class DiscoveryEngine:
                     'vpc_count': 0,
                     'vpcs': []
                 }
-        return report
+
+        total_vpcs = sum(cloud['vpc_count'] for cloud in report.values())
+        healthy_clouds = [name for name, cloud in report.items() if cloud['status'] == 'healthy']
+        unhealthy_clouds = [name for name, cloud in report.items() if cloud['status'] == 'unhealthy']
+
+        summary = {
+            'total_vpcs': total_vpcs,
+            'healthy_clouds': healthy_clouds,
+            'unhealthy_clouds': unhealthy_clouds
+        }
+
+        return {'summary': summary, 'clouds': report}

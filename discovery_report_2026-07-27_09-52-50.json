@@ -1,0 +1,49 @@
+{
+  "summary": {
+    "total_vpcs": 3,
+    "healthy_clouds": [
+      "AWS",
+      "Azure",
+      "GCP"
+    ],
+    "unhealthy_clouds": []
+  },
+  "clouds": {
+    "AWS": {
+      "status": "healthy",
+      "vpc_count": 1,
+      "vpcs": [
+        {
+          "vpc_id": "vpc-0186edc71425a217f",
+          "cidr_block": "172.31.0.0/16",
+          "state": "available",
+          "is_default": true
+        }
+      ]
+    },
+    "Azure": {
+      "status": "healthy",
+      "vpc_count": 1,
+      "vpcs": [
+        {
+          "vpc_id": "/subscriptions/mock-sub-id/resourceGroups/mock-rg/providers/Microsoft.Network/virtualNetworks/mock-vnet-1",
+          "cidr_block": "10.0.0.0/16",
+          "state": "Succeeded",
+          "is_default": false
+        }
+      ]
+    },
+    "GCP": {
+      "status": "healthy",
+      "vpc_count": 1,
+      "vpcs": [
+        {
+          "vpc_id": "projects/mock-project/global/networks/mock-vpc-1",
+          "cidr_block": "10.128.0.0/20",
+          "state": "READY",
+          "is_default": false
+        }
+      ]
+    }
+  }
+}
