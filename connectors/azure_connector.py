@@ -13,6 +13,16 @@ class AzureConnector(BaseConnector):
                 'is_default': False
             }
         ]
-
+    def discover_subnets(self):
+        return [
+            {
+                'subnet_id': '/subscriptions/mock-sub-id/resourceGroups/mock-rg/providers/Microsoft.Network/virtualNetworks/mock-vnet-1/subnets/mock-subnet-1',
+                'vpc_id': '/subscriptions/mock-sub-id/resourceGroups/mock-rg/providers/Microsoft.Network/virtualNetworks/mock-vnet-1',
+                'cidr_block': '10.0.1.0/24',
+                'availability_zone': 'eastus-1',
+                'state': 'Succeeded'
+            }
+        ]
+        
     def health_check(self):
         return True

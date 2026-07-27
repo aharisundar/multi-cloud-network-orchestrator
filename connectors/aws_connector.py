@@ -17,6 +17,20 @@ class AWSConnector(BaseConnector):
                 'is_default': vpc['IsDefault']
             })
             return vpcs
+
+    def discover_subnets(self):
+        response = self.client.describe_subnets()
+        subnets = []
+        for subnet in response['Subnets']:
+            subnets.append({
+                'subnet_id': subnet['SubnetId'],
+                'vpc_id': subnet['VpcId'],
+                'cidr_block': subnet['CidrBlock'],
+                'availability_zone': subnet['AvailabilityZone'],
+                'state': subnet['State']
+            })
+        return subnets
+        
     def health_check(self):
         try:
             self.client.describe_vpcs()
