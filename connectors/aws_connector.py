@@ -46,7 +46,26 @@ class AWSConnector(BaseConnector):
                 'routes': routes
             })
         return route_tables
-          
+    
+    def discover_security_groups(self):
+        response = self.client.describe_security_groups()
+        security_groups = []
+        for sg in response['SecurityGroups']:
+            inbound_rules = []
+            for rule in sg['IpPermissions']:
+                inbound_rules.append({
+                    'protocol': rule.get('IpProtocol', 'N/A'),
+                    'from_port': rule.get('FromPort', 'N/A'),
+                    'to_port': rule.get('ToPort', 'N/A')
+                })
+            security_groups.append({
+                'group_id': sg['GroupId'],
+                'group_name': sg['GroupName'],
+                'vpc_id': sg['VpcId'],
+                'inbound_rules': inbound_rules
+            })
+        return security_groups
+        
     def health_check(self):
         try:
             self.client.describe_vpcs()

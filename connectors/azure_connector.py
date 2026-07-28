@@ -36,6 +36,21 @@ class AzureConnector(BaseConnector):
                 ]
             }
         ]
-           
+    def discover_security_groups(self):
+        return [
+            {
+                'group_id': '/subscriptions/mock-sub-id/resourceGroups/mock-rg/providers/Microsoft.Network/networkSecurityGroups/mock-nsg-1',
+                'group_name': 'mock-nsg-1',
+                'vpc_id': '/subscriptions/mock-sub-id/resourceGroups/mock-rg/providers/Microsoft.Network/virtualNetworks/mock-vnet-1',
+                'inbound_rules': [
+                    {
+                        'protocol': 'TCP',
+                        'from_port': 443,
+                        'to_port': 443
+                    }
+                ]
+            }
+        ]
+             
     def health_check(self):
         return True

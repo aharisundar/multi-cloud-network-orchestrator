@@ -17,5 +17,9 @@ class BaseConnector(ABC):
         pass
 
     @abstractmethod
+    def discover_security_groups(self):
+        pass
+
+    @abstractmethod
     def health_check(self):
         pass

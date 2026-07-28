@@ -36,6 +36,21 @@ class GCPConnector(BaseConnector):
                 ]
             }
         ]
-           
+    def discover_security_groups(self):
+        return [
+            {
+                'group_id': 'projects/mock-project/global/firewalls/mock-fw-1',
+                'group_name': 'mock-fw-1',
+                'vpc_id': 'projects/mock-project/global/networks/mock-vpc-1',
+                'inbound_rules': [
+                    {
+                        'protocol': 'tcp',
+                        'from_port': 443,
+                        'to_port': 443
+                    }
+                ]
+            }
+        ]
+              
     def health_check(self):
         return True
