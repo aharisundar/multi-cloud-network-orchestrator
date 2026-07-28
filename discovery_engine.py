@@ -1,3 +1,4 @@
+from datetime import datetime
 class DiscoveryEngine:
     def __init__(self, connectors):
         self.connectors = connectors
@@ -50,5 +51,5 @@ class DiscoveryEngine:
             'healthy_clouds': healthy_clouds,
             'unhealthy_clouds': unhealthy_clouds
         }
-
-        return {'summary': summary, 'clouds': report}
+        discovered_at = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        return {'discovered_at': discovered_at, 'summary': summary, 'clouds': report}
