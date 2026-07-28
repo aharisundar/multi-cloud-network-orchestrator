@@ -23,6 +23,19 @@ class AzureConnector(BaseConnector):
                 'state': 'Succeeded'
             }
         ]
-        
+    def discover_route_tables(self):
+        return [
+            {
+                'route_table_id': '/subscriptions/mock-sub-id/resourceGroups/mock-rg/providers/Microsoft.Network/routeTables/mock-rt-1',
+                'vpc_id': '/subscriptions/mock-sub-id/resourceGroups/mock-rg/providers/Microsoft.Network/virtualNetworks/mock-vnet-1',
+                'routes': [
+                    {
+                        'destination': '0.0.0.0/0',
+                        'target': 'Internet'
+                    }
+                ]
+            }
+        ]
+           
     def health_check(self):
         return True

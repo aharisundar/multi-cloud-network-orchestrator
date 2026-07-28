@@ -23,6 +23,19 @@ class GCPConnector(BaseConnector):
                 'state': 'READY'
             }
         ]
-        
+    def discover_route_tables(self):
+        return [
+            {
+                'route_table_id': 'projects/mock-project/global/routes/mock-route-1',
+                'vpc_id': 'projects/mock-project/global/networks/mock-vpc-1',
+                'routes': [
+                    {
+                        'destination': '0.0.0.0/0',
+                        'target': 'default-internet-gateway'
+                    }
+                ]
+            }
+        ]
+           
     def health_check(self):
         return True

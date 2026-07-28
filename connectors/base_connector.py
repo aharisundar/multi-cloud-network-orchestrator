@@ -13,5 +13,9 @@ class BaseConnector(ABC):
         pass
 
     @abstractmethod
+    def discover_route_tables(self):
+        pass
+
+    @abstractmethod
     def health_check(self):
         pass

@@ -30,7 +30,23 @@ class AWSConnector(BaseConnector):
                 'state': subnet['State']
             })
         return subnets
-        
+    def discover_route_tables(self):
+        response = self.client.describe_route_tables()
+        route_tables = []
+        for rt in response['RouteTables']:
+            routes = []
+            for route in rt['Routes']:
+                routes.append({
+                    'destination': route.get('DestinationCidrBlock', 'N/A'),
+                    'target': route.get('GatewayId', route.get('NatGatewayId', 'local'))
+                })
+            route_tables.append({
+                'route_table_id': rt['RouteTableId'],
+                'vpc_id': rt['VpcId'],
+                'routes': routes
+            })
+        return route_tables
+          
     def health_check(self):
         try:
             self.client.describe_vpcs()
