@@ -43,5 +43,33 @@ class RoutingOptimizer:
                     })
 
             findings[provider] = provider_findings
-
         return findings
+
+    def check_cidr_overlaps(self):
+        overlap_findings = []
+        all_vpcs = []
+
+        clouds = self.discovery_report['clouds']
+        for provider, cloud_data in clouds.items():
+            for vpc in cloud_data.get('vpcs', []):
+                all_vpcs.append({
+                    'provider': provider,
+                    'vpc_id': vpc['vpc_id'],
+                    'cidr_block': vpc['cidr_block']
+                })
+
+        for i in range(len(all_vpcs)):
+            for j in range(i + 1, len(all_vpcs)):
+                if all_vpcs[i]['cidr_block'] == all_vpcs[j]['cidr_block']:
+                    overlap_findings.append({
+                        'severity': 'warning',
+                        'message': f"CIDR overlap: {all_vpcs[i]['provider']} VPC {all_vpcs[i]['vpc_id']} and {all_vpcs[j]['provider']} VPC {all_vpcs[j]['vpc_id']} both use {all_vpcs[i]['cidr_block']}"
+                    })
+
+        if not overlap_findings:
+            overlap_findings.append({
+                'severity': 'info',
+                'message': 'No CIDR overlaps detected across clouds'
+            })
+
+        return overlap_findings

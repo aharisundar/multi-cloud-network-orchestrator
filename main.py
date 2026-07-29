@@ -20,6 +20,11 @@ routing_findings = optimizer.analyze()
 print("\n=== ROUTING OPTIMIZATION FINDINGS ===")
 print(json.dumps(routing_findings, indent=2))
 
+cidr_overlap_findings = optimizer.check_cidr_overlaps()
+
+print("\n=== CIDR OVERLAP FINDINGS ===")
+print(json.dumps(cidr_overlap_findings, indent=2))
+
 timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 filename = f'reports/discovery_report_{timestamp}.json'
 
