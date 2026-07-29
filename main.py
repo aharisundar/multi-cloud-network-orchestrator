@@ -2,6 +2,7 @@ from connectors.aws_connector import AWSConnector
 from connectors.azure_connector import AzureConnector
 from connectors.gcp_connector import GCPConnector
 from discovery_engine import DiscoveryEngine
+from routing_optimizer import RoutingOptimizer
 import json
 from datetime import datetime
 
@@ -10,7 +11,14 @@ connectors = [AWSConnector(), AzureConnector(), GCPConnector()]
 engine = DiscoveryEngine(connectors)
 report = engine.run_discovery()
 
+print("=== DISCOVERY REPORT ===")
 print(json.dumps(report, indent=2))
+
+optimizer = RoutingOptimizer(report)
+routing_findings = optimizer.analyze()
+
+print("\n=== ROUTING OPTIMIZATION FINDINGS ===")
+print(json.dumps(routing_findings, indent=2))
 
 timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 filename = f'reports/discovery_report_{timestamp}.json'
