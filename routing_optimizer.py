@@ -73,3 +73,28 @@ class RoutingOptimizer:
             })
 
         return overlap_findings
+
+    def check_security_group_exposure(self):
+        exposure_findings = []
+        clouds = self.discovery_report['clouds']
+
+        for provider, cloud_data in clouds.items():
+            for sg in cloud_data.get('security_groups', []):
+                for rule in sg['inbound_rules']:
+                    protocol = rule.get('protocol', '')
+                    from_port = rule.get('from_port', '')
+                    if protocol == '-1' or from_port == 'N/A':
+                        exposure_findings.append({
+                            'severity': 'warning',
+                            'provider': provider,
+                            'group_id': sg['group_id'],
+                            'message': f"Security group {sg['group_name']} allows all protocols/ports - review for over-permissive access"
+                        })
+
+        if not exposure_findings:
+            exposure_findings.append({
+                'severity': 'info',
+                'message': 'No overly permissive security group rules detected'
+            })
+
+        return exposure_findings

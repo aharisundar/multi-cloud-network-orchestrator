@@ -25,6 +25,11 @@ cidr_overlap_findings = optimizer.check_cidr_overlaps()
 print("\n=== CIDR OVERLAP FINDINGS ===")
 print(json.dumps(cidr_overlap_findings, indent=2))
 
+sg_exposure_findings = optimizer.check_security_group_exposure()
+
+print("\n=== SECURITY GROUP EXPOSURE FINDINGS ===")
+print(json.dumps(sg_exposure_findings, indent=2))
+
 timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 filename = f'reports/discovery_report_{timestamp}.json'
 
