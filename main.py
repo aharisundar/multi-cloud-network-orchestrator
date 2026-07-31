@@ -40,7 +40,15 @@ print(json.dumps(cost_summary, indent=2))
 timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 filename = f'reports/discovery_report_{timestamp}.json'
 
+full_report = {
+    'discovery': report,
+    'routing_findings': routing_findings,
+    'cidr_overlap_findings': cidr_overlap_findings,
+    'security_group_exposure_findings': sg_exposure_findings,
+    'cost_summary': cost_summary
+}
+
 with open(filename, 'w') as f:
-    json.dump(report, f, indent=2)
+    json.dump(full_report, f, indent=2)
 
 print(f"\nReport saved to {filename}")
