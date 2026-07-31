@@ -20,7 +20,7 @@ class AzureConnector(BaseConnector):
             vpcs.append({
                 'vpc_id': vnet.id,
                 'cidr_block': vnet.address_space.address_prefixes[0] if vnet.address_space.address_prefixes else 'N/A',
-                'state': vnet.provisioning_state,
+                'state': vnet.provisioning_state.value if hasattr(vnet.provisioning_state, 'value') else str(vnet.provisioning_state),
                 'is_default': False
             })
         return vpcs
