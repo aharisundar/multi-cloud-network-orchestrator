@@ -32,10 +32,10 @@ print("\n=== SECURITY GROUP EXPOSURE FINDINGS ===")
 print(json.dumps(sg_exposure_findings, indent=2))
 
 cost_analyzer = CostAnalyzer(report)
-cost_findings = cost_analyzer.estimate_costs()
+cost_summary = cost_analyzer.get_cost_summary()
 
 print("\n=== COST ANALYSIS ===")
-print(json.dumps(cost_findings, indent=2))
+print(json.dumps(cost_summary, indent=2))
 
 timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 filename = f'reports/discovery_report_{timestamp}.json'

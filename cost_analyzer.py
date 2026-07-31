@@ -40,3 +40,20 @@ class CostAnalyzer:
             }
 
         return cost_summary
+    
+    def get_cost_summary(self):
+        cost_findings = self.estimate_costs()
+        total_estimated_cost = sum(cloud['estimated_monthly_cost_usd'] for cloud in cost_findings.values())
+
+        cost_ranking = sorted(
+            cost_findings.items(),
+            key=lambda item: item[1]['estimated_monthly_cost_usd'],
+            reverse=True
+        )
+        highest_cost_cloud = cost_ranking[0][0] if cost_ranking else None
+
+        return {
+            'total_estimated_monthly_cost_usd': round(total_estimated_cost, 2),
+            'highest_cost_cloud': highest_cost_cloud,
+            'per_cloud_costs': cost_findings
+        }
