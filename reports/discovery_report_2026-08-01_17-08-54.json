@@ -1,0 +1,260 @@
+{
+  "discovery": {
+    "discovered_at": "2026-08-01 17:08:54",
+    "summary": {
+      "total_vpcs": 3,
+      "total_subnets": 9,
+      "total_route_tables": 2,
+      "total_security_groups": 2,
+      "healthy_clouds": [
+        "AWS",
+        "Azure",
+        "GCP"
+      ],
+      "unhealthy_clouds": []
+    },
+    "clouds": {
+      "AWS": {
+        "status": "healthy",
+        "vpc_count": 1,
+        "subnet_count": 6,
+        "route_table_count": 1,
+        "security_group_count": 1,
+        "vpcs": [
+          {
+            "vpc_id": "vpc-0186edc71425a217f",
+            "cidr_block": "172.31.0.0/16",
+            "state": "available",
+            "is_default": true
+          }
+        ],
+        "subnets": [
+          {
+            "subnet_id": "subnet-0d26d484b14eca45f",
+            "vpc_id": "vpc-0186edc71425a217f",
+            "cidr_block": "172.31.0.0/20",
+            "availability_zone": "us-east-1a",
+            "state": "available"
+          },
+          {
+            "subnet_id": "subnet-06599bbef679ceb1f",
+            "vpc_id": "vpc-0186edc71425a217f",
+            "cidr_block": "172.31.64.0/20",
+            "availability_zone": "us-east-1f",
+            "state": "available"
+          },
+          {
+            "subnet_id": "subnet-043b4d7114103c52b",
+            "vpc_id": "vpc-0186edc71425a217f",
+            "cidr_block": "172.31.80.0/20",
+            "availability_zone": "us-east-1b",
+            "state": "available"
+          },
+          {
+            "subnet_id": "subnet-0fbe7e867dc6415b7",
+            "vpc_id": "vpc-0186edc71425a217f",
+            "cidr_block": "172.31.16.0/20",
+            "availability_zone": "us-east-1c",
+            "state": "available"
+          },
+          {
+            "subnet_id": "subnet-0038a387914f51296",
+            "vpc_id": "vpc-0186edc71425a217f",
+            "cidr_block": "172.31.32.0/20",
+            "availability_zone": "us-east-1d",
+            "state": "available"
+          },
+          {
+            "subnet_id": "subnet-0b43f8f292a54aff8",
+            "vpc_id": "vpc-0186edc71425a217f",
+            "cidr_block": "172.31.48.0/20",
+            "availability_zone": "us-east-1e",
+            "state": "available"
+          }
+        ],
+        "route_tables": [
+          {
+            "route_table_id": "rtb-03a9d99745f4153ab",
+            "vpc_id": "vpc-0186edc71425a217f",
+            "routes": [
+              {
+                "destination": "172.31.0.0/16",
+                "target": "local"
+              },
+              {
+                "destination": "0.0.0.0/0",
+                "target": "igw-08244d0693e7fcea7"
+              }
+            ]
+          }
+        ],
+        "security_groups": [
+          {
+            "group_id": "sg-034dd0be3f1437cfb",
+            "group_name": "default",
+            "vpc_id": "vpc-0186edc71425a217f",
+            "inbound_rules": [
+              {
+                "protocol": "-1",
+                "from_port": "N/A",
+                "to_port": "N/A"
+              }
+            ]
+          }
+        ]
+      },
+      "Azure": {
+        "status": "healthy",
+        "vpc_count": 1,
+        "subnet_count": 2,
+        "route_table_count": 0,
+        "security_group_count": 0,
+        "vpcs": [
+          {
+            "vpc_id": "/subscriptions/87024c45-b328-45fd-a971-30f0ec85ed8a/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet",
+            "cidr_block": "10.0.0.0/16",
+            "state": "Succeeded",
+            "is_default": false
+          }
+        ],
+        "subnets": [
+          {
+            "subnet_id": "/subscriptions/87024c45-b328-45fd-a971-30f0ec85ed8a/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default",
+            "vpc_id": "/subscriptions/87024c45-b328-45fd-a971-30f0ec85ed8a/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet",
+            "cidr_block": null,
+            "availability_zone": "N/A",
+            "state": "Succeeded"
+          },
+          {
+            "subnet_id": "/subscriptions/87024c45-b328-45fd-a971-30f0ec85ed8a/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default2",
+            "vpc_id": "/subscriptions/87024c45-b328-45fd-a971-30f0ec85ed8a/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet",
+            "cidr_block": null,
+            "availability_zone": "N/A",
+            "state": "Succeeded"
+          }
+        ],
+        "route_tables": [],
+        "security_groups": []
+      },
+      "GCP": {
+        "status": "healthy",
+        "vpc_count": 1,
+        "subnet_count": 1,
+        "route_table_count": 1,
+        "security_group_count": 1,
+        "vpcs": [
+          {
+            "vpc_id": "projects/mock-project/global/networks/mock-vpc-1",
+            "cidr_block": "10.128.0.0/20",
+            "state": "READY",
+            "is_default": false
+          }
+        ],
+        "subnets": [
+          {
+            "subnet_id": "projects/mock-project/regions/us-central1/subnetworks/mock-subnet-1",
+            "vpc_id": "projects/mock-project/global/networks/mock-vpc-1",
+            "cidr_block": "10.128.1.0/24",
+            "availability_zone": "us-central1",
+            "state": "READY"
+          }
+        ],
+        "route_tables": [
+          {
+            "route_table_id": "projects/mock-project/global/routes/mock-route-1",
+            "vpc_id": "projects/mock-project/global/networks/mock-vpc-1",
+            "routes": [
+              {
+                "destination": "0.0.0.0/0",
+                "target": "default-internet-gateway"
+              }
+            ]
+          }
+        ],
+        "security_groups": [
+          {
+            "group_id": "projects/mock-project/global/firewalls/mock-fw-1",
+            "group_name": "mock-fw-1",
+            "vpc_id": "projects/mock-project/global/networks/mock-vpc-1",
+            "inbound_rules": [
+              {
+                "protocol": "tcp",
+                "from_port": 443,
+                "to_port": 443
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "routing_findings": {
+    "AWS": [
+      {
+        "severity": "info",
+        "route_table_id": "rtb-03a9d99745f4153ab",
+        "vpc_id": "vpc-0186edc71425a217f",
+        "message": "No issues found - route table looks healthy"
+      }
+    ],
+    "Azure": [],
+    "GCP": [
+      {
+        "severity": "info",
+        "route_table_id": "projects/mock-project/global/routes/mock-route-1",
+        "vpc_id": "projects/mock-project/global/networks/mock-vpc-1",
+        "message": "No issues found - route table looks healthy"
+      }
+    ]
+  },
+  "cidr_overlap_findings": [
+    {
+      "severity": "info",
+      "message": "No CIDR overlaps detected across clouds"
+    }
+  ],
+  "security_group_exposure_findings": [
+    {
+      "severity": "warning",
+      "provider": "AWS",
+      "group_id": "sg-034dd0be3f1437cfb",
+      "message": "Security group default allows all protocols/ports - review for over-permissive access"
+    }
+  ],
+  "cost_summary": {
+    "total_estimated_monthly_cost_usd": 0.0,
+    "highest_cost_cloud": "AWS",
+    "per_cloud_costs": {
+      "AWS": {
+        "estimated_monthly_cost_usd": 0.0,
+        "note": "Estimate based on resource counts only - VPCs, subnets, route tables, and security groups themselves are free; actual cost depends on compute, storage, data transfer, and NAT/load balancer usage not yet discovered by this tool.",
+        "resource_breakdown": {
+          "vpcs": 1,
+          "subnets": 6,
+          "route_tables": 1,
+          "security_groups": 1
+        }
+      },
+      "Azure": {
+        "estimated_monthly_cost_usd": 0.0,
+        "note": "Estimate based on resource counts only - VPCs, subnets, route tables, and security groups themselves are free; actual cost depends on compute, storage, data transfer, and NAT/load balancer usage not yet discovered by this tool.",
+        "resource_breakdown": {
+          "vpcs": 1,
+          "subnets": 2,
+          "route_tables": 0,
+          "security_groups": 0
+        }
+      },
+      "GCP": {
+        "estimated_monthly_cost_usd": 0.0,
+        "note": "Estimate based on resource counts only - VPCs, subnets, route tables, and security groups themselves are free; actual cost depends on compute, storage, data transfer, and NAT/load balancer usage not yet discovered by this tool.",
+        "resource_breakdown": {
+          "vpcs": 1,
+          "subnets": 1,
+          "route_tables": 1,
+          "security_groups": 1
+        }
+      }
+    }
+  }
+}

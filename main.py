@@ -1,3 +1,4 @@
+from health_monitor import HealthMonitor
 from cost_analyzer import CostAnalyzer
 from connectors.aws_connector import AWSConnector
 from connectors.azure_connector import AzureConnector
@@ -40,12 +41,19 @@ print(json.dumps(cost_summary, indent=2))
 timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 filename = f'reports/discovery_report_{timestamp}.json'
 
+health_monitor = HealthMonitor(connectors)
+health_status = health_monitor.check_health()
+
+print("\n=== HEALTH STATUS ===")
+print(json.dumps(health_status, indent=2))
+
 full_report = {
     'discovery': report,
     'routing_findings': routing_findings,
     'cidr_overlap_findings': cidr_overlap_findings,
     'security_group_exposure_findings': sg_exposure_findings,
-    'cost_summary': cost_summary
+    'cost_summary': cost_summary,
+    'health_status': health_status
 }
 
 with open(filename, 'w') as f:
