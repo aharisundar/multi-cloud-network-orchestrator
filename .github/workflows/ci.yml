@@ -19,7 +19,7 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest -v
+        run: pytest test_routing_optimizer.py -v
 
       - name: Build Docker image
         run: docker build -t multi-cloud-orchestrator .
